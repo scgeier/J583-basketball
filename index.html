@@ -47,7 +47,7 @@
         <th><button class="btn btn-default btn-sm"ng-click="base.sort('blocks')">Blk</button></th>
         <th><button class="btn btn-default btn-sm"ng-click="base.sort('turnovers')">TO</button></th>
         <th><button class="btn btn-default btn-sm"ng-click="base.sort('fouls')">Fouls</button></th>
-        <th><button class="btn btn-default btn-sm"ng-click="base.sort('points')">Pts</button></th>
+        <th><button class="btn btn-default btn-sm"ng-click="base.sort('points')">PPG</button></th>
       </tr>
     </thead>
     <tbody ng-repeat="player in base.players | filter:terms | orderBy:base.sortProperty:base.reverseSort">
@@ -59,7 +59,7 @@
         <td>{{player.year}}</td>
         <td>{{player.games}}</td>
         <td>{{player.minutes}}</td>
-        <td>{{player.fieldGoalPercentage}}</td>
+        <td>{{base.fieldGoalPercentage(player)}}</td>
         <td>{{player.offensiveRebounds}}</td>
         <td>{{player.defensiveRebounds}}</td>
         <td>{{player.assists}}</td>
@@ -67,7 +67,7 @@
         <td>{{player.blocks}}</td>
         <td>{{player.turnovers}}</td>
         <td>{{player.fouls}}</td>
-        <td>{{player.points}}</td>
+        <td>{{base.pointsPerGame(player)}}</td>
       </tr>
   </table>
               

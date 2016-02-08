@@ -6,17 +6,30 @@ var app = angular.module('myApp', []);
 
 app.controller('BaseController', function() {
     this.message = "Ready";
+
     this.players = data;
-    this.players.fieldGoalPercentage = this.players.fieldGoals / this.players.fieldGoalsAttempted;
+    this.fieldGoalPercentage = function(player){
+        var num = (player.fieldGoals / player.fieldGoalsAttempted) * 100;
+        var n = num.toFixed(1);
+        return n;
+    };
     
+    this.pointsPerGame = function(player){
+        var num = player.points / player.games;
+        var n = num.toFixed(1);
+        return n;
+    };
+
 this.sortProperty = "last";
 this.reverseSort = false;
 this.sort = function(prop){
     this.sortProperty = prop;
     this.reverseSort = !this.reverseSort;
 };
+
+console.log(this.players.fieldGoalPercentage);
+
    
-    console.log(this.players.fieldGoalPercentage);
 });
 
 
@@ -418,14 +431,14 @@ var data = [
         ],
         games: 5,
         minutes: 7,
-        fieldGoals: 0,
-        fieldGoalsAttempted: 0,
+        fieldGoals: 1,
+        fieldGoalsAttempted: 2,
         twoPoints: 0,
         twoPointsAttempted: 0,
         threePoints: 0,
         threePointsAttempted: 0,
         freeThrows: 2,
-        freeThrowsAttempted: .500,
+        freeThrowsAttempted: 5,
         offensiveRebounds: 0,
         defensiveRebounds: 0,
         assists: 0,
@@ -463,6 +476,5 @@ var data = [
         points: 0
     }
 ];
-
 
 })();
